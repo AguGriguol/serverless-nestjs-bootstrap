@@ -1,0 +1,20 @@
+service: nest-bootstrap
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+
+functions:
+  nest-bootstrap:
+    handler: dist/main.handler
+    events:
+      - httpApi: '*'
+
+package:
+  patterns:
+    - '!src'
+    - '!docker'
+
+plugins:
+  - serverless-offline
